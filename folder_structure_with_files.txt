@@ -1,0 +1,18 @@
+Folder PATH listing for volume Windows
+Volume serial number is FEB7-501C
+C:.
+�   1scrap.py
+�   2cleaning.py
+�   3plotting.py
+�   4EDA.py
+�   app.py
+�   folder_structure_with_files.txt
+�   gaming_laptops.csv
+�   gaming_laptops2.csv
+�   gaming_laptops2_cleaned.csv
+�   links.txt
+�   requirements.txt
+�   
++---__pycache__
+        plotting.cpython-313.pyc
+        
