@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import GradientBoostingRegressor
+import joblib
 
 df = pd.read_csv("gaming_laptops2_cleaned.csv")
 
@@ -164,3 +165,48 @@ print(importance.head(10))
 # top 10 things that DECREASE price
 print("Top 10 Price Drivers in Tunisia:")
 print(importance.tail(10))
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(df_cleaned_model[['RAM_GB', 'Storage_GB', 'Price', 'Garentie']].corr(), annot=True, cmap='coolwarm')
+plt.title("Correlation: RAM vs Price")
+plt.show()
+
+# ----
+
+# saving the model
+
+joblib.dump(model, 'laptop_price_model.pkl')
+
+# Save the columns list (important for dummy variables in new data)
+
+model_columns = list(X.columns)
+joblib.dump(model_columns, 'model_columns.pkl')
+
+print("Model saved successfully!")
+
+# ----
+
+# building a "Price Predictor" function
+
+def predict_laptop_price(brand, cpu, gpu, ram, storage, garentie):
+    # 1. Create a template dataframe with zeros
+    input_data = pd.DataFrame(0, index=[0], columns=model_columns)
+    
+    # 2. Fill numeric values
+    input_data['RAM_GB'] = ram
+    input_data['Storage_GB'] = storage
+    input_data['Garentie'] = garentie
+    
+    # 3. Handle dummy variables (Brand, CPU, GPU)
+    if f'Brand_{brand}' in input_data.columns: input_data[f'Brand_{brand}'] = 1
+    if f'CPU_{cpu}' in input_data.columns: input_data[f'CPU_{cpu}'] = 1
+    if f'GPU_{gpu}' in input_data.columns: input_data[f'GPU_{gpu}'] = 1
+    
+    # 4. Predict (Log) and convert back to Dinars
+    log_prediction = model.predict(input_data)
+    actual_price = np.expm1(log_prediction)
+    
+    return round(actual_price[0], 2)
+
+# Test it!
+print(f"Predicted Price: {predict_laptop_price('MSI', 'Intel Core i5-13420H', 'RTX 3050', 16, 512, 1)} DT")

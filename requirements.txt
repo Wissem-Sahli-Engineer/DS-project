@@ -1,1 +1,1 @@
-pip install dash plotly pandas numpy matplotlib seaborn selenium webdriver_manager GradientBoostingRegressor StandardScaler 
+pip install dash plotly pandas numpy matplotlib seaborn selenium webdriver_manager GradientBoostingRegressor StandardScaler streamlit

@@ -185,7 +185,13 @@ Features that signify entry-level or budget-friendly pricing:
 
 ---
 
+## 🚀 6. Deployment
+The last step is to deploy the model to a web application. I used Streamlit to create a simple web application that can be used to predict the price of a laptop.
+To run the app, copy this command in the terminal : 
 
+```bash
+streamlit run 6deploy.py
+```
 
 ---
 
