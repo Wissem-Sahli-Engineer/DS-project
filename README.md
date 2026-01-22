@@ -36,12 +36,15 @@ pip install -r requirements.txt
 ## 📂 Project Structure
 ````text
 DS-project/
-│
+│├── assets/
+           ├──custom.css
 ├── 1scrap.py # Data collection (web scraping)
 ├── 2cleaning.py # Data cleaning & preprocessing
 ├── 3plotting.py # Visualization functions
+├── 4app.py # Dash dashboard
 ├── 4EDA.py # Exploratory Data Analysis
-├── app.py # Dash dashboard
+├── 5model.py
+├── EDA_Using_BI.pbix
 ├── gaming_laptops.csv # df using first scraping method-(Title Split)
 ├── gaming_laptops2.csv # df using second scraping method-(Description Parsing)
 ├── gaming_laptops2_cleaned.csv
