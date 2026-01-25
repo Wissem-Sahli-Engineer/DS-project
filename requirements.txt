@@ -1,1 +1,10 @@
-pip install Streamlit dash plotly pandas numpy matplotlib seaborn selenium webdriver_manager GradientBoostingRegressor StandardScaler
+streamlit
+dash
+plotly
+pandas
+numpy
+matplotlib
+seaborn
+selenium
+webdriver_manager
+scikit-learn
